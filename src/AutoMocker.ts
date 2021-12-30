@@ -1,4 +1,4 @@
-import { JestFrameworkAdapter, JestMockingFramework, MockingFrameworkAdapter } from './models'
+import { JestFrameworkAdapter, JestMockingFramework, MockingFrameworkAdapter, SinonFrameworkAdapter, SinonMockingFramework } from './models'
 
 type Class<T> = new (...args: any[]) => T
 
@@ -24,5 +24,9 @@ export class AutoMocker<T> {
 
   static createJestMocker(jest: JestMockingFramework) {
     return new AutoMocker(new JestFrameworkAdapter(jest))
+  }
+
+  static createSinonMocker(sinon: SinonMockingFramework) {
+    return new AutoMocker(new SinonFrameworkAdapter(sinon))
   }
 }
