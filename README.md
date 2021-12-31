@@ -18,7 +18,7 @@ Automocker is a supplementary module to your JS/TS test framework of choice whic
 
 ## How to use automocker?
 
-That's easy...
+That's easy... :palm_tree: :relaxed:
 
 ```javascript
 import { AutoMocker } from '../src'
