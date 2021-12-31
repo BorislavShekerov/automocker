@@ -8,6 +8,7 @@ const FX_RATES_DB: Record<SupportedCurrencyPairs, number> = {
   [SupportedCurrencyPairs.USD_EUR]: 0.88,
   [SupportedCurrencyPairs.USD_GBP]: 0.74,
 }
+
 export class FxRateDataSource {
   async fetchFxRate(currencyPair: SupportedCurrencyPairs): Promise<number> {
     return FX_RATES_DB[currencyPair]
