@@ -1,4 +1,4 @@
-import { AutoMocker } from '../src'
+import { AutoMocker } from '..'
 import { FxRateDataSource, SupportedCurrencyPairs } from './domain/FxRateDataSource'
 import { RealTimeExchangeRateProvider } from './domain/RealTimeExchangeRateProvider'
 
