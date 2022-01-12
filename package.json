@@ -1,6 +1,6 @@
 {
   "name": "automocker",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A lightweight TS Mocking framework for unit testing",
   "main": "dist/index",
   "types": "src/index",
@@ -18,18 +18,24 @@
     "type": "git",
     "url": "git+https://github.com/BorislavShekerov/automocker.git"
   },
-  "keywords": ["mocking", "jest", "sinon"],
+  "keywords": [
+    "mocking",
+    "jest",
+    "sinon"
+  ],
   "author": "Borislav Shekerov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BorislavShekerov/automocker/issues"
   },
   "homepage": "https://github.com/BorislavShekerov/automocker#readme",
-  "devDependencies": {
+  "dependencies": {
     "@types/jest": "27.0.3",
+    "@types/sinon": "10.0.6"
+  },
+  "devDependencies": {
     "eslint": "8.5.0",
     "jest": "27.4.5",
-    "@types/sinon": "10.0.6",
     "sinon": "12.0.1",
     "ts-jest": "27.1.2",
     "tslib": "^2.3.1",
