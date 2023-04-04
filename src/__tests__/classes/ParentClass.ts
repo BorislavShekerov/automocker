@@ -6,4 +6,8 @@ export class ParentClass {
   sum() {
     return 1 + this.dependency.returnRandomNumber()
   }
+
+  async sumWithAsyncStep() {
+    return 1 + (await this.dependency.returnRandomNumberAsynchronously())
+  }
 }

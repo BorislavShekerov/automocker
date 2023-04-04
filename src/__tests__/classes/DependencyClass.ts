@@ -4,7 +4,15 @@ export class DependencyClass {
   // Proves that constructor params are disregarded
   constructor(_foo: number, _bar: string) {}
 
-  returnRandomNumber(): number {
+  private makeRandomNumber() {
     return 50 * Math.random()
+  }
+
+  returnRandomNumber(): number {
+    return this.makeRandomNumber()
+  }
+
+  async returnRandomNumberAsynchronously(): Promise<number> {
+    return Promise.resolve(this.makeRandomNumber())
   }
 }
