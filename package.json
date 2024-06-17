@@ -1,6 +1,6 @@
 {
   "name": "automocker",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A lightweight TS Mocking framework for unit testing",
   "main": "dist/index",
   "types": "src/index",

@@ -6,20 +6,34 @@ type Class<T> = new (...args: any[]) => T
 export class AutoMocker<T> {
   constructor(private mockingFrameworkAdapter: MockingFrameworkAdapter<T>) {}
 
-  /** Creates a class instance of the input type, mocking all of its */
+  /** Creates a class instance of the input type, mocking all of its functions */
   createMockInstance<K>(TheClass: Class<K>): Record<keyof K, T> & K {
-    const classInstance = new TheClass()
+    const classInstance: Partial<Record<keyof K, T>> = {}
 
-    return Object.getOwnPropertyNames(TheClass.prototype).reduce(
-      (acc, functionName) =>
-        functionName !== 'constructor'
-          ? {
-              ...acc,
-              [functionName]: this.mockingFrameworkAdapter.createMockFunction(),
-            }
-          : acc,
-      classInstance as Record<keyof K, T> & K,
-    )
+    let currentPrototype = TheClass.prototype
+
+    const allFunctionNames = new Set<string>()
+
+    while (currentPrototype && currentPrototype !== Object.prototype) {
+      Object.getOwnPropertyNames(currentPrototype)
+        .filter((name) => {
+          try {
+            return typeof currentPrototype[name] === 'function' && name !== 'constructor'
+          } catch (e) {
+            return false
+          }
+        })
+        .forEach((name) => {
+          allFunctionNames.add(name)
+        })
+
+      currentPrototype = Object.getPrototypeOf(currentPrototype)
+    }
+    allFunctionNames.forEach((functionName) => {
+      classInstance[functionName as keyof K] = this.mockingFrameworkAdapter.createMockFunction()
+    })
+
+    return classInstance as Record<keyof K, T> & K
   }
 
   static createJestMocker(jest: JestMockingFramework) {
