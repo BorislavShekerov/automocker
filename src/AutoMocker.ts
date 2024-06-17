@@ -16,8 +16,16 @@ export class AutoMocker<T> {
 
     while (currentPrototype && currentPrototype !== Object.prototype) {
       Object.getOwnPropertyNames(currentPrototype)
-        .filter((name) => typeof currentPrototype[name] === 'function' && name !== 'constructor')
-        .forEach((name) => allFunctionNames.add(name))
+        .filter((name) => {
+          try {
+            return typeof currentPrototype[name] === 'function' && name !== 'constructor'
+          } catch (e) {
+            return false
+          }
+        })
+        .forEach((name) => {
+          allFunctionNames.add(name)
+        })
 
       currentPrototype = Object.getPrototypeOf(currentPrototype)
     }
