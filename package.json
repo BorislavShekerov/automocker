@@ -1,6 +1,6 @@
 {
   "name": "automocker",
-  "version": "0.2.0",
+  "version": "0.2.0-beta.1",
   "description": "A lightweight TS Mocking framework for unit testing",
   "main": "dist/index",
   "types": "src/index",
@@ -21,7 +21,8 @@
   "keywords": [
     "mocking",
     "jest",
-    "sinon"
+    "sinon",
+    "vitest"
   ],
   "author": "Borislav Shekerov",
   "license": "ISC",
@@ -39,7 +40,8 @@
     "sinon": "12.0.1",
     "ts-jest": "27.1.2",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "vitest": "^4.0.18"
   },
   "jest": {
     "moduleFileExtensions": [
