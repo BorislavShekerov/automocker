@@ -1,14 +1,14 @@
 import { MockingFrameworkAdapter } from './MockingFrameworkAdapter'
-import vitest from 'vitest'
+import type { Mock } from 'vitest'
 
 export interface VitestMockingFramework {
-  fn: () => vitest.MockedFunction<any>
+  fn: () => Mock<any>
 }
 
-export class VitestFrameworkAdapter implements MockingFrameworkAdapter<vitest.MockedFunction<any>> {
+export class VitestFrameworkAdapter implements MockingFrameworkAdapter<Mock<any>> {
   constructor(private vitest: VitestMockingFramework) {}
 
-  createMockFunction(): vitest.MockedFunction<any> {
+  createMockFunction(): Mock<any> {
     return this.vitest.fn()
   }
 }
